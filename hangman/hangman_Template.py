@@ -41,6 +41,14 @@ class Hangman:
         Asks the user for a letter.
     '''
     def __init__(self, word_list, num_lives=5):
+        self.word_list = word_list
+        self.num_lives = num_lives
+        self.word = random.choice(word_list)
+        self.word_guessed = ['_'] * len(self.word)
+        self.num_letters = len(self.word)
+        self.list_letters = []
+        print(f"The mystery word has {self.num_letters} characters")
+        print(f"{self.word_guessed}")
         # TODO 2: Initialize the attributes as indicated in the docstring
         # TODO 2: Print two message upon initialization:
         # 1. "The mistery word has {num_letters} characters"
@@ -73,6 +81,7 @@ class Hangman:
         2. If the character is a single character
         If it passes both checks, it calls the check_letter method.
         '''
+
         # TODO 1: Ask the user for a letter iteratively until the user enters a valid letter
         # TODO 1: Assign the letter to a variable called `letter`
         # TODO 1: The letter has to comply with the following criteria: It has to be a single character. If it is not, print "Please, enter just one character"
