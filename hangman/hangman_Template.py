@@ -45,9 +45,9 @@ class Hangman:
         self.num_lives = num_lives
         self.word = random.choice(word_list) #randomly selects a word
         self.word_guessed = ['_'] * len(self.word) # replaces the word to be guessed characters with a '_'
-        self.num_letters = len(set(self.word)) # This sets the self.word as a set for the num_letters attribute in order to ensure there are no duplicate letters and therefore the letters checked are unique.
+        self.num_letters = len (set(self.word)) # This sets the self.word as a set for the num_letters attribute in order to ensure there are no duplicate letters and therefore the letters checked are unique.
         self.list_letters = [] #empty array of letters that the player has already tried.
-        print(f"The mystery word has {self.num_letters} characters")
+        print(f"The mystery word has {self.num_letters} unique characters.")
         print(f"{self.word_guessed}") # prints out the word to be guessed which will show in the format: ['_','_','_','_','_']
 
         # TODO 2: Initialize the attributes as indicated in the docstring
@@ -73,6 +73,8 @@ class Hangman:
             for i, char in enumerate(self.word): # here I have enumerated self.word in order to iterate over each character and also get the corresponding indices for each character.
                 if char == letter: # checking if the character is equal to the entered letter
                     self.word_guessed[i] = letter
+                    self.num_letters -= 1
+                    print(f"The mystery word has {self.num_letters} unique characters left.")
         else:
             self.num_lives -= 1 # decrements the players number of lives if they guess the wrong letter.
 
